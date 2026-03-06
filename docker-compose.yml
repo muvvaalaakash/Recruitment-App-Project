@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  recruitment-app:
+    build: .
+    container_name: recruitment-app
+
+    ports:
+      - "4000:3000"
+
+    depends_on:
+      - mongo
+
+    environment:
+      MONGO_URI: mongodb://mongo:27017/recruitmentDB
+
+  mongo:
+    image: mongo:7
+    container_name: recruitment-db
+
+    ports:
+      - "27017:27017"
